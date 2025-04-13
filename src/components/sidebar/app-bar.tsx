@@ -19,6 +19,7 @@ import {
 import {usePathname} from "next/navigation";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {ClipboardList, LayoutList, NotebookText} from "lucide-react";
+import Link from "next/link";
 
 export function AppBar() {
     const pathname = usePathname()
@@ -43,20 +44,23 @@ export function AppBar() {
                     <SidebarGroupContent>
                         <SidebarMenu>
                             <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
-                                    <p><LayoutList/> Рецепты</p>
+                                <SidebarMenuButton asChild isActive={pathname.startsWith("/recipes")}>
+                                    <Link href="/recipes" className="w-full">
+                                        <LayoutList/>
+                                        <span>Рецепты</span>
+                                    </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
 
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
-                                    <p><ClipboardList /> Список продуктов</p>
+                                    <p><ClipboardList/> Список продуктов</p>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
 
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
-                                    <p><NotebookText /> План на неделю</p>
+                                    <p><NotebookText/> План на неделю</p>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                         </SidebarMenu>

@@ -1,0 +1,33 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum RecipeCategory {
+  BREAKFAST
+  LUNCH
+  DINNER
+}
+
+model Recipe {
+  id          String         @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String?        @map("image_url")
+  cookingTime Int            @map("cooking_time") // in minutes
+  calories    Int
+  proteins    Int
+  fats        Int
+  carbs       Int            @map("carbohydrates")
+  category    RecipeCategory
+  createdAt   DateTime       @default(now()) @map("created_at")
+  updatedAt   DateTime       @updatedAt @map("updated_at")
+
+  @@map("recipes")
+}

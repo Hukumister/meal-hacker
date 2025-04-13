@@ -3,6 +3,14 @@
 First, run the development server:
 
 ```bash
+npm install
+```
+
+```bash
+npx prisma generate
+```
+
+```bash
 npm run dev
 ```
 
