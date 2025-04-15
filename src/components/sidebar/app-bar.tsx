@@ -70,6 +70,15 @@ export function AppBar() {
             <SidebarRail/>
             <SidebarFooter>
                 <SidebarMenu>
+                    <Link href="/profile">
+                        <div className="flex items-center gap-2">
+                            <Avatar className="h-10 w-10 rounded-full">
+                                <AvatarImage/>
+                                <AvatarFallback>U</AvatarFallback>
+                            </Avatar>
+                            <span>Профиль</span>
+                        </div>
+                    </Link>
                     {!open && (
                         <SidebarMenuItem>
                             <SidebarTrigger/>
