@@ -1,9 +1,11 @@
 'use client'
 
-import { useFilters } from '@/hooks/use-filters'
+import { useFilters, isFiltered } from '@/hooks/use-filters'
 import { type RecipeFilters } from '@/models/recipe'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { XIcon } from 'lucide-react'
 
 interface RecipeFilterBarProps {
   initialFilters: RecipeFilters
@@ -19,6 +21,10 @@ export function RecipeFilterBar({ initialFilters }: RecipeFilterBarProps) {
     }))
   }
 
+  const handleClearFilters = () => {
+    setFilters({})
+  }
+
   return (
     <div className="flex flex-col gap-4 md:flex-row md:items-center">
       {/* Search */}
@@ -28,7 +34,7 @@ export function RecipeFilterBar({ initialFilters }: RecipeFilterBarProps) {
           placeholder="Search recipes..."
           value={filters.search || ''}
           onChange={(e) => handleFilterChange('search', e.target.value)}
-          className="max-w-sm"
+          className="w-full"
         />
       </div>
 
@@ -76,6 +82,19 @@ export function RecipeFilterBar({ initialFilters }: RecipeFilterBarProps) {
             <SelectItem value="desc">Descending</SelectItem>
           </SelectContent>
         </Select>
+
+        {/* Clear Filters */}
+        {isFiltered(filters) && (
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={handleClearFilters}
+            className="shrink-0"
+          >
+            <XIcon className="h-4 w-4" />
+            <span className="sr-only">Clear filters</span>
+          </Button>
+        )}
       </div>
     </div>
   )
