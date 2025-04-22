@@ -60,7 +60,10 @@ export function AppBar() {
 
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
-                                    <p><NotebookText/> План на неделю</p>
+                                    <Link href="/meal-plan"  className="w-full flex items-center gap-2 text-black">
+                                        <NotebookText className="w-4 h-4"/> 
+                                        <span >План на неделю</span>
+                                    </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                         </SidebarMenu>
@@ -70,7 +73,7 @@ export function AppBar() {
             <SidebarRail/>
             <SidebarFooter>
                 <SidebarMenu>
-                    <Link href="/profile">
+                    <Link href="/ProfilePage">
                         <div className="flex items-center gap-2">
                             <Avatar className="h-10 w-10 rounded-full">
                                 <AvatarImage/>
