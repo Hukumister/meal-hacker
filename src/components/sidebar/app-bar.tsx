@@ -8,6 +8,7 @@ import {
     SidebarFooter,
     SidebarGroup,
     SidebarGroupContent,
+    SidebarGroupLabel,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
@@ -18,7 +19,7 @@ import {
 } from "@/components/ui/sidebar"
 import {usePathname} from "next/navigation";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {ClipboardList, LayoutList, NotebookText} from "lucide-react";
+import {ClipboardList, LayoutList, NotebookText, Settings} from "lucide-react";
 import Link from "next/link";
 
 export function AppBar() {
@@ -63,6 +64,21 @@ export function AppBar() {
                                     <Link href="/meal-plan"  className="w-full flex items-center gap-2 text-black">
                                         <NotebookText className="w-4 h-4"/> 
                                         <span >План на неделю</span>
+                                    </Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarGroupLabel>Admin</SidebarGroupLabel>
+                <SidebarGroup>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild isActive={pathname.startsWith("/admin/settings")}>
+                                    <Link href="/admin/settings" className="w-full">
+                                        <Settings/>
+                                        <span>Настройки</span>
                                     </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
