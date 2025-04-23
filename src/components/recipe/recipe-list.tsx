@@ -54,7 +54,7 @@ export function RecipeList({ items, total }: RecipeListProps) {
                 </CardDescription>
               </CardHeader>
               
-              <div className="flex flex-wrap gap-2 text-sm">
+              <div className="flex gap-4 text-sm">
                 <span className="text-muted-foreground">
                   {recipe.cookingTime} min
                 </span>
