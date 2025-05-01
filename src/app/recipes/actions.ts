@@ -29,10 +29,14 @@ export async function createRecipeAction(
             };
         }
 
-        await createRecipe(result.data.title, recipe)
-        revalidatePath("/recipes");
+        if (recipe.success) {
+            await createRecipe(result.data.title, recipe.data)
+            revalidatePath("/recipes");
 
-        return {success: true, data: undefined};
+            return {success: true, data: undefined};
+        } else {
+            return {success: false, message: recipe.error, errors: []}
+        }
     } catch (error) {
         console.error(error);
         return {
