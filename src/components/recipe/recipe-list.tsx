@@ -37,7 +37,7 @@ export function RecipeList({items, total}: RecipeListProps) {
 
                             <div className="flex flex-wrap gap-2 text-sm">
                                 <span className="text-muted-foreground">{recipe.cookingTime.total} min</span>
-                                <span className="text-muted-foreground">{recipe.nutritionPerServing.calories} cal</span>
+                                <span className="text-muted-foreground">{recipe.calories} cal</span>
                             </div>
 
                             <div className="mt-2 text-sm grid grid-cols-3 gap-2">
