@@ -1,7 +1,8 @@
 import {getSetting} from "@/models/setting";
-import {RecipeExtraction} from "@/types/recipe";
+import {Recipe} from "@/types/recipe";
+import {Result} from "@/types/result";
 
-export async function extractRecipe(description: string): Promise<RecipeExtraction> {
+export async function extractRecipe(description: string): Promise<Result<Recipe>> {
     const prompt = await getSetting("recipe_prompt")
     const modelResponse = await fetch(
         "https://llm.api.cloud.yandex.net/foundationModels/v1/completion",
@@ -40,10 +41,15 @@ export async function extractRecipe(description: string): Promise<RecipeExtracti
     )
     const json = await modelResponse.json()
     const text = json.result.alternatives[0].message.text as string
-    return convertMarkdownJsonToObject<RecipeExtraction>(text)
+    const resultJson = convertMarkdownJsonToObject(text)
+    if (resultJson.hasOwnProperty("error")) {
+        return {error: resultJson.error, success: false};
+    } else {
+        return {data: resultJson as Recipe, success: true};
+    }
 }
 
-function convertMarkdownJsonToObject<T>(markdownJson: string): T {
+function convertMarkdownJsonToObject(markdownJson: string): any {
     let processedText = markdownJson.trim();
 
     if (processedText.startsWith('```') && processedText.endsWith('```')) {

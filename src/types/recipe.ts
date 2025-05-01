@@ -21,7 +21,8 @@ export type Weight = {
     unit: string; // г/мл/унция/фунт/и т.д.
 }
 
-export type RecipeExtraction = {
+export type Recipe = {
+    id: string;
     title: string;
     ingredients: Ingredient[];
     instructions: string[];
@@ -33,7 +34,3 @@ export type RecipeExtraction = {
     servings: number;
     weight: Weight;
 }
-
-export type Recipe = {
-    id: string;
-} & RecipeExtraction
