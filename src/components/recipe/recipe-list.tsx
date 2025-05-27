@@ -31,7 +31,7 @@ export function RecipeList({items, total}: RecipeListProps) {
                         )}
                     >
                         <CardContent className="flex-1 p-4">
-                            <CardHeader className="p-0 mb-2">
+                            <CardHeader className="p-1 mb-1 top-0">
                                 <CardTitle className="text-lg">{recipe.title}</CardTitle>
                             </CardHeader>
 
