@@ -31,13 +31,13 @@ export function RecipeList({items, total}: RecipeListProps) {
                         )}
                     >
                         <CardContent className="flex-1 p-4">
-                            <CardHeader className="p-0 mb-2">
+                            <CardHeader className="p-1 mb-1 top-0">
                                 <CardTitle className="text-lg">{recipe.title}</CardTitle>
                             </CardHeader>
 
-                            <div className="flex flex-wrap gap-4 text-sm">
+                            <div className="flex flex-wrap gap-2 text-sm">
                                 <span className="text-muted-foreground">{recipe.cookingTime.total} min</span>
-                                <span className="text-muted-foreground">{recipe.nutritionPerServing.calories} cal</span>
+                                <span className="text-muted-foreground">{recipe.calories} cal</span>
                             </div>
 
                             <div className="mt-2 text-sm grid grid-cols-3 gap-2">
@@ -54,6 +54,7 @@ export function RecipeList({items, total}: RecipeListProps) {
                                     <span className="text-muted-foreground ml-1">carbs</span>
                                 </div>
                             </div>
+
                         </CardContent>
                     </Card>
                 ))}
