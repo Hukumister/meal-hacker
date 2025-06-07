@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
+import {useState} from 'react';
+import {ChevronLeft, ChevronRight, Plus} from 'lucide-react';
 
 const daysOfWeek = [
   'понедельник', 'вторник', 'среда',

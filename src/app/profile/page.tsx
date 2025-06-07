@@ -1,4 +1,4 @@
-import Avatar from "../ProfilePage/Avatar";
+import Avatar from "./avatar";
 
 export default function ProfilePage() {
   return (
