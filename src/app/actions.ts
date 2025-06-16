@@ -31,7 +31,7 @@ export async function createRecipeAction(
 
         if (recipe.success) {
             await createRecipe(result.data.title, recipe.data)
-            revalidatePath("/recipes");
+            revalidatePath("/");
 
             return {success: true, data: undefined};
         } else {

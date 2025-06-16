@@ -8,7 +8,7 @@ const daysOfWeek = [
   'четверг', 'пятница', 'суббота', 'воскресенье'
 ];
 
-const MealPlan = () => {
+const Schedule = () => {
   const [weekOffset, setWeekOffset] = useState(0);
 
   const getWeekDates = () => {
@@ -57,4 +57,4 @@ const MealPlan = () => {
   );
 };
 
-export default MealPlan;
+export default Schedule;

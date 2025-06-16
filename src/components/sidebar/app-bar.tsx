@@ -46,7 +46,7 @@ export function AppBar() {
                         <SidebarMenu>
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild isActive={pathname.startsWith("/recipes")}>
-                                    <Link href="/recipes" className="w-full">
+                                    <Link href="/" className="w-full">
                                         <LayoutList/>
                                         <span>Рецепты</span>
                                     </Link>
@@ -61,9 +61,9 @@ export function AppBar() {
 
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
-                                    <Link href="/meal-plan"  className="w-full flex items-center gap-2 text-black">
-                                        <NotebookText className="w-4 h-4"/> 
-                                        <span >План на неделю</span>
+                                    <Link href="/schedule" className="w-full flex items-center gap-2 text-black">
+                                        <NotebookText className="w-4 h-4"/>
+                                        <span>План на неделю</span>
                                     </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
@@ -89,15 +89,6 @@ export function AppBar() {
             <SidebarRail/>
             <SidebarFooter>
                 <SidebarMenu>
-                    <Link href="/ProfilePage">
-                        <div className="flex items-center gap-2">
-                            <Avatar className="h-10 w-10 rounded-full">
-                                <AvatarImage/>
-                                <AvatarFallback>U</AvatarFallback>
-                            </Avatar>
-                            <span>Профиль</span>
-                        </div>
-                    </Link>
                     {!open && (
                         <SidebarMenuItem>
                             <SidebarTrigger/>
