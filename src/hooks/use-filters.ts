@@ -1,4 +1,4 @@
-import {usePathname, useRouter, useSearchParams} from "next/navigation"
+import {useRouter, useSearchParams} from "next/navigation"
 import {useEffect, useState} from "react"
 
 type Filters = {
@@ -16,7 +16,10 @@ export function useFilters<T extends Filters>(defaultFilters?: T) {
 
     useEffect(() => {
         const newSearchParams = filtersToSearchParams(filters, searchParams)
-        router.push(`?${newSearchParams.toString()}`)
+        if (newSearchParams.toString() !== searchParams.toString()) {
+            router.replace(`?${newSearchParams.toString()}`)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filters])
 
     useEffect(() => {
@@ -28,11 +31,23 @@ export function useFilters<T extends Filters>(defaultFilters?: T) {
 }
 
 export function filtersToSearchParams<T extends Filters>(filters: T, current?: URLSearchParams): URLSearchParams {
+    if (Object.keys(filters).length === 0) {
+        return new URLSearchParams()
+    }
+
     const searchParams = new URLSearchParams(current?.toString())
-    Object.entries(filters).forEach(([key, value]) => {
+    const entries = Object.entries(filters)
+
+    entries.forEach(([key, value]) => {
         if (value && value !== "-") {
             searchParams.set(key, value)
         } else {
+            searchParams.delete(key)
+        }
+    })
+
+    searchParams.entries().forEach(([key]) => {
+        if (filters[key] === "" || filters[key] === "-") {
             searchParams.delete(key)
         }
     })
@@ -41,7 +56,8 @@ export function filtersToSearchParams<T extends Filters>(filters: T, current?: U
 
 export function searchParamsToFilters<T extends Filters>(searchParams: URLSearchParams) {
     return Array.from(searchParams.keys()).reduce((acc, filter) => {
-        acc[filter] = searchParams.get(filter) || ""
+        const value = searchParams.get(filter) || ""
+        acc[filter] = value === "-" ? "" : value
         return acc
     }, {} as Record<string, string>) as T
 }

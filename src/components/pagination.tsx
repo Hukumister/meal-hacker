@@ -21,7 +21,7 @@ export function Pagination({totalItems, itemsPerPage = 1000}: { totalItems: numb
     const onPageChange = (page: number) => {
         const params = new URLSearchParams(searchParams.toString())
         params.set("page", page.toString())
-        router.push(`?${params.toString()}`)
+        router.push(`?${params.toString()}`, {scroll: false})
     }
 
     const getPageNumbers = () => {

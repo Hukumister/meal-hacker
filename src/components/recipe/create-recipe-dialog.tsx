@@ -74,7 +74,7 @@ export function CreateRecipeDialog() {
                                 <FormLabel>Description</FormLabel>
                                 <FormControl>
                                     <Textarea
-                                        className="resize-none max-h-[250px]"
+                                        className="resize-none min-h-[250px]"
                                         placeholder="Enter recipe description"
                                         {...field}
                                     />
