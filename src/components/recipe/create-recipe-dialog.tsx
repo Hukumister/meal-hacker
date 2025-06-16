@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useActionState, useEffect, useState} from "react";
 import {type CreateRecipeFormValues, createRecipeSchema} from "@/form/recipe";
-import {createRecipeAction} from "@/app/recipes/actions";
+import {createRecipeAction} from "@/app/actions";
 import {fillFormErrors} from "@/lib/form";
 import AsyncForm from "@/components/async-form";
 import {Button} from "@/components/ui/button";
