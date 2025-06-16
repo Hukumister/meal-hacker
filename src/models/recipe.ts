@@ -1,7 +1,7 @@
 import {cache} from 'react'
 import {prisma} from '@/lib/prisma'
 import {Prisma, Recipe as DbRecipe, RecipeCategory} from "@prisma/client";
-import {CookingTime, Ingredient, Nutrition, Recipe, RecipeExtraction, Weight} from "@/types/recipe";
+import {CookingTime, Ingredient, Nutrition, Recipe, Weight} from "@/types/recipe";
 
 export type RecipeFilters = {
     search?: string
@@ -55,7 +55,7 @@ export const getRecipeById = cache(async (id: string) => {
 
 export async function createRecipe(
     title: string,
-    recipe: RecipeExtraction
+    recipe: Recipe
 ) {
     return prisma.recipe.create({
         data: {

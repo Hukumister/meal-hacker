@@ -2,7 +2,7 @@
 
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useActionState, useEffect} from "react";
+import {useActionState, useEffect, useState} from "react";
 import {type CreateRecipeFormValues, createRecipeSchema} from "@/form/recipe";
 import {createRecipeAction} from "@/app/recipes/actions";
 import {fillFormErrors} from "@/lib/form";
@@ -22,6 +22,7 @@ export function CreateRecipeDialog() {
         },
     });
 
+    const [isOpen, setIsOpen] = useState(false)
     const [state, action, pending] = useActionState(createRecipeAction, {
         success: false,
         message: "",
@@ -32,13 +33,14 @@ export function CreateRecipeDialog() {
         form.clearErrors();
         if (state.success) {
             form.reset();
+            setIsOpen(false)
         } else {
             fillFormErrors(form, state.errors);
         }
     }, [state, form]);
 
     return (
-        <Dialog>
+        <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
             <DialogTrigger asChild>
                 <Button>Create Recipe</Button>
             </DialogTrigger>
