@@ -51,7 +51,7 @@ const Schedule = () => {
       </div>
 
       <div className="text-center mt-6">
-        <button className="text-gray-400 text-sm underline">🖨️ Печать</button>
+        <button className="text-gray-400 text-sm underline"> Печать</button>
       </div>
     </div>
   );

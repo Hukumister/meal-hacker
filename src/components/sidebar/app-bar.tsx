@@ -45,6 +45,14 @@ export function AppBar() {
                     <SidebarGroupContent>
                         <SidebarMenu>
                             <SidebarMenuItem>
+                                <SidebarMenuButton asChild isActive={pathname.startsWith("/recipe")}>
+                                    <Link href="/recipe_card" className="w-full flex items-center gap-2">
+                                        <LayoutList className="w-4 h-4" />
+                                        <span>Тестовый рецепт</span>
+                                     </Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            <SidebarMenuItem>
                                 <SidebarMenuButton asChild isActive={pathname.startsWith("/recipes")}>
                                     <Link href="/" className="w-full">
                                         <LayoutList/>
