@@ -42,14 +42,14 @@ export async function extractRecipe(description: string): Promise<Result<Recipe>
     const json = await modelResponse.json()
     const text = json.result.alternatives[0].message.text as string
     const resultJson = convertMarkdownJsonToObject(text)
-    if (resultJson.hasOwnProperty("error")) {
-        return {error: resultJson.error, success: false};
+    if (resultJson && typeof resultJson === 'object' && 'error' in resultJson) {
+        return {error: (resultJson as {error: string}).error, success: false};
     } else {
         return {data: resultJson as Recipe, success: true};
     }
 }
 
-function convertMarkdownJsonToObject(markdownJson: string): any {
+function convertMarkdownJsonToObject(markdownJson: string): unknown {
     let processedText = markdownJson.trim();
 
     if (processedText.startsWith('```') && processedText.endsWith('```')) {

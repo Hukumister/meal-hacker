@@ -30,30 +30,46 @@ export function RecipeList({items, total}: RecipeListProps) {
                             "flex items-center gap-4"
                         )}
                     >
-                        <CardContent className="flex-1 p-4">
-                            <CardHeader className="p-0 mb-2">
-                                <CardTitle className="text-lg">{recipe.title}</CardTitle>
+                        <CardContent className="flex-1 flex-col w-full p-1">
+                            <CardHeader className="mb-2">
+                                <CardTitle className="text-lg w-full">{recipe.title}</CardTitle>
                             </CardHeader>
 
-                            <div className="flex flex-wrap gap-2 text-sm">
-                                <span className="text-muted-foreground">{recipe.cookingTime.total} min</span>
-                                <span className="text-muted-foreground">{recipe.calories} cal</span>
+                            <div className="grid grid-cols-2 w-full text-sm gap-4">
+
+                                <div>
+                                    <h3>Каллории</h3>
+                                    <p>{recipe.calories} ккал</p>
+                                </div>
+
+                                <div>
+                                    <h3>Время</h3>
+                                    <p>{recipe.cookingTime.total} мин</p>
+                                </div>
+
+
+                                <div>
+                                    <h3>БЖУ</h3>
+
+                                    <p>
+                                        <span className="font-medium">{recipe.nutritionPerServing.protein} г</span>
+                                        <span className="text-muted-foreground ml-1">белки</span>
+                                    </p>
+
+                                    <p>
+                                        <span className="font-medium">{recipe.nutritionPerServing.fat} г</span>
+                                        <span className="text-muted-foreground ml-1">жири</span>
+                                    </p>
+
+                                    <p>
+                                        <span className="font-medium">{recipe.nutritionPerServing.carbs} г</span>
+                                        <span className="text-muted-foreground ml-1">углеводы</span>
+                                    </p>
+
+                                </div>
+
                             </div>
 
-                            <div className="mt-2 text-sm grid grid-cols-3 gap-2">
-                                <div>
-                                    <span className="font-medium">{recipe.nutritionPerServing.protein} g</span>
-                                    <span className="text-muted-foreground ml-1">protein</span>
-                                </div>
-                                <div>
-                                    <span className="font-medium">{recipe.nutritionPerServing.fat}g</span>
-                                    <span className="text-muted-foreground ml-1">fats</span>
-                                </div>
-                                <div>
-                                    <span className="font-medium">{recipe.nutritionPerServing.carbs}g</span>
-                                    <span className="text-muted-foreground ml-1">carbs</span>
-                                </div>
-                            </div>
                         </CardContent>
                     </Card>
                 ))}
@@ -68,4 +84,4 @@ export function RecipeList({items, total}: RecipeListProps) {
             )}
         </div>
     )
-} 
+}

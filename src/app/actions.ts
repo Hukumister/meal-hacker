@@ -7,7 +7,7 @@ import {extractRecipe} from "@/models/recipe-extract";
 import {createRecipe} from "@/models/recipe";
 
 export async function createRecipeAction(
-    prevState: any,
+    prevState: unknown,
     formData: CreateRecipeFormValues
 ): Promise<FormResponse<void>> {
     try {
