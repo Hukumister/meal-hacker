@@ -31,35 +31,43 @@ export function RecipeList({items, total}: RecipeListProps) {
                         )}
                     >
                         <CardContent className="flex-1 flex-col w-full p-1">
-                            <CardHeader className="p-0 mb-2">
-                                <CardTitle className="text-lg text-center w-full">{recipe.title}</CardTitle>
+                            <CardHeader className="mb-2">
+                                <CardTitle className="text-lg w-full">{recipe.title}</CardTitle>
                             </CardHeader>
 
-                            <div className="flex justify-between w-full text-sm items-start ">
-                                <div className="flex flex-col text-center ml-5">
-                                    <div className='font-medium mb-1 text-center gap-2'>Energy value</div>
-                                    <span className="text-muted-foreground">{recipe.calories} cal</span>
+                            <div className="grid grid-cols-2 w-full text-sm gap-4">
 
-                                    <div className="font-medium mb-1 text-center gap-2 mt-2">Time</div>
-                                    <span className="text-muted-foreground">{recipe.cookingTime.total} min</span>
+                                <div>
+                                    <h3>Каллории</h3>
+                                    <p>{recipe.calories} ккал</p>
                                 </div>
-                                <div className="flex flex-col text-right mr-5">
-                                    <div className="font-medium mb-1 text-center">PFC</div>
-                                    <div className="grid grid-cols-1 gap-2 text-left">
-                                        <div>
-                                            <span className="font-medium">{recipe.nutritionPerServing.protein} g</span>
-                                            <span className="text-muted-foreground ml-1">protein</span>
-                                        </div>
-                                        <div>
-                                            <span className="font-medium">{recipe.nutritionPerServing.fat} g</span>
-                                            <span className="text-muted-foreground ml-1">fats</span>
-                                        </div>
-                                        <div>
-                                            <span className="font-medium">{recipe.nutritionPerServing.carbs} g</span>
-                                            <span className="text-muted-foreground ml-1">carbs</span>
-                                        </div>
-                                    </div>
+
+                                <div>
+                                    <h3>Время</h3>
+                                    <p>{recipe.cookingTime.total} мин</p>
                                 </div>
+
+
+                                <div>
+                                    <h3>БЖУ</h3>
+
+                                    <p>
+                                        <span className="font-medium">{recipe.nutritionPerServing.protein} г</span>
+                                        <span className="text-muted-foreground ml-1">белки</span>
+                                    </p>
+
+                                    <p>
+                                        <span className="font-medium">{recipe.nutritionPerServing.fat} г</span>
+                                        <span className="text-muted-foreground ml-1">жири</span>
+                                    </p>
+
+                                    <p>
+                                        <span className="font-medium">{recipe.nutritionPerServing.carbs} г</span>
+                                        <span className="text-muted-foreground ml-1">углеводы</span>
+                                    </p>
+
+                                </div>
+
                             </div>
 
                         </CardContent>
@@ -76,4 +84,4 @@ export function RecipeList({items, total}: RecipeListProps) {
             )}
         </div>
     )
-} 
+}

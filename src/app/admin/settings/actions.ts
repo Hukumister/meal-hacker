@@ -7,7 +7,7 @@ import {createSetting, deleteSetting, updateSetting} from '@/models/setting'
 import {ActionResponse, FormResponse} from '@/types/response'
 
 export async function createSettingAction(
-    prevState: any,
+    prevState: unknown,
     formData: z.infer<typeof settingFormSchema>
 ): Promise<FormResponse<boolean>> {
     try {
@@ -39,7 +39,7 @@ export async function createSettingAction(
 
 export async function updateSettingAction(
     id: string,
-    prevState: any,
+    prevState: unknown,
     formData: z.infer<typeof settingFormSchema>
 ): Promise<FormResponse<boolean>> {
     try {
